@@ -4,15 +4,8 @@ import moment from "moment";
 import Moment from "react-moment";
 import { v4 as uuidv4 } from "uuid";
 
-const currentDateTime = moment();
-
-function DateTime(props) {
-  return <p className="date">{DateTimePretty(props.date)}</p>;
-}
-
-function DateTimePretty(date) {
-  return <Moment fromNow date={new Date(date)} />;
-}
+const DateTime = (date) => date;
+const DateTimePretty = (date) => <Moment fromNow date={new Date(date)} />;
 
 function Video(props) {
   return (
@@ -23,7 +16,7 @@ function Video(props) {
         allow="autoplay; encrypted-media"
         allowfullscreen
       ></iframe>
-      <DateTime date={props.date} />
+      <p className="date">{DateTimePretty(DateTime(props.date))}</p>
     </div>
   );
 }
